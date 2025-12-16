@@ -22,8 +22,8 @@ export function MovementsListPage() {
             Gerencie e audite todas as entradas, saídas e ajustes de inventário.
           </p>
         </div>
-        <div className="flex gap-3">
-          <Button size={'sm'}>
+        <div className="w-full md:w-[unset] flex gap-3">
+          <Button size={'sm'} className="w-full">
             <NavLink
               className="flex gap-2 justify-center items-center"
               to={'new'}

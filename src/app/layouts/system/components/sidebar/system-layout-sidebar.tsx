@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 
 export const SystemLayoutSidebar = () => {
   return (
-    <aside className="w-64 h-full min-h-[calc(100vh-6.75rem)] p-6 px-2 rounded-2xl hidden md:block border border-border/50 bg-sidebar">
+    <aside className="w-64 h-full min-h-[calc(100vh-6.75rem)] p-6 px-2 rounded-2xl hidden md:block bg-sidebar">
       <nav>
         <ul className="space-y-2">
           {navLinks.map(({ href, icon, label }) => {

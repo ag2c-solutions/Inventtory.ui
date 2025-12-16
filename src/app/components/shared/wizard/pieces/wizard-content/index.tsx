@@ -7,7 +7,10 @@ export function WizardContent({ className, ...props }: ComponentProps<'div'>) {
   const { state } = useWizard();
 
   return (
-    <Card className={cn('px-6', className)} {...props}>
+    <Card
+      className={cn('p-4 md:p-6 h-full overflow-y-auto', className)}
+      {...props}
+    >
       {state.currentStep?.component}
     </Card>
   );

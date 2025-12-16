@@ -91,7 +91,7 @@ describe('ProductForm UI Integration', () => {
     renderComponent('Create');
 
     const variantSwitch = screen.getByRole('switch', {
-      name: /Este produto possui variações/i
+      name: /Variações/i
     });
 
     await user.click(variantSwitch);

@@ -16,8 +16,8 @@ export const ProductsListPage = () => {
             variações.
           </p>
         </div>
-        <div className="flex gap-3">
-          <Button size={'sm'} className="bg-green-950 cursor-pointer">
+        <div className="flex w-full md:w-[unset] gap-3">
+          <Button size={'sm'} className="bg-green-950 cursor-pointer w-full">
             <Link className="flex gap-2 items-center" to="create">
               <PlusCircle />
               Adicionar Produto

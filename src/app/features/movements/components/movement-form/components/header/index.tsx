@@ -49,8 +49,8 @@ export function MovementFormHeader() {
           </Button>
         </div>
 
-        <div className="grid grid-cols-1  md:grid-cols-6 gap-4 bg-card p-4 rounded-lg border shadow-sm">
-          <section className="col-span-2">
+        <div className="grid grid-cols-12 gap-4 bg-card p-4 rounded-lg border shadow-sm">
+          <section className="col-span-12 md:col-span-4">
             <FormField
               control={form.control}
               name="type"
@@ -91,7 +91,7 @@ export function MovementFormHeader() {
               )}
             />
           </section>
-          <section className="flex gap-2 justify-center col-span-2">
+          <section className="flex gap-2 justify-center col-span-12 md:col-span-4">
             <div className="w-3/5">
               <FormField
                 control={form.control}
@@ -132,7 +132,7 @@ export function MovementFormHeader() {
                 )}
               />
             </div>
-            <div className="flex gap-1">
+            <div className="pl-2 flex gap-1">
               <FormField
                 control={form.control}
                 name="time"
@@ -152,12 +152,12 @@ export function MovementFormHeader() {
               />
             </div>
           </section>
-          <section className="flex w-full">
+          <section className="flex w-full col-span-12 md:col-span-4">
             <FormField
               control={form.control}
               name="reason"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="w-3/5">
                   <Select
                     defaultValue={field.value}
                     onValueChange={field.onChange}
@@ -178,24 +178,23 @@ export function MovementFormHeader() {
                 </FormItem>
               )}
             />
+            <FormField
+              control={form.control}
+              name="documentNumber"
+              render={({ field }) => (
+                <FormItem className="pl-2 w-full">
+                  <FormControl>
+                    <Input
+                      className="w-full"
+                      placeholder="Nº Documento"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
           </section>
-
-          <FormField
-            control={form.control}
-            name="documentNumber"
-            render={({ field }) => (
-              <FormItem className="w-full">
-                <FormControl>
-                  <Input
-                    className="w-full"
-                    placeholder="Nº Documento"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
         </div>
       </div>
     </header>

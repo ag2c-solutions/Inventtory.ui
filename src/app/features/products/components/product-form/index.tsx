@@ -10,7 +10,7 @@ export function ProductForm({ label }: { label: string }) {
   const { steps, onSubmit, onCancel, handleNextStep } = useProductForm();
 
   return (
-    <form className="space-y-6 h-full">
+    <form className="h-full flex flex-col gap-4">
       <Wizard
         steps={steps}
         onBeforeNextStep={handleNextStep}

@@ -57,13 +57,23 @@ export const columnsProductListTable: ColumnDef<IProduct>[] = [
     header: 'Estoque',
     minSize: 100,
     enableResizing: false,
-    cell: ({ cell }) => {
-      return cell.row.original.stock && !cell.row.original.hasVariants ? (
+    cell: ({ row }) => {
+      const product = row.original;
+      const calculatedTotalStock =
+        product.hasVariants && product.variants
+          ? product.variants.reduce(
+              (acc, variant) => acc + (variant.stock || 0),
+              0
+            )
+          : (product.stock ?? 0);
+
+      return (
         <ProductTableColumnStock
-          totalStock={cell.row.original.stock}
-          minimumStock={cell.row.original.minimumStock}
+          totalStock={calculatedTotalStock}
+          minimumStock={product.minimumStock}
+          variants={product.variants}
         />
-      ) : null;
+      );
     }
   },
   {

@@ -13,7 +13,7 @@ export function DataTableDropdownColumnsVisibility() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+      <DropdownMenuTrigger asChild className="w-full md:w-[unset]">
         <Button variant="outline" size="sm">
           <Eye />
           Exibir Colunas

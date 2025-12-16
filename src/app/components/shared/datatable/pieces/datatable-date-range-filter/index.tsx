@@ -46,7 +46,7 @@ export function DataTableDateRangeFilter({
             id="date"
             variant={'outline'}
             className={cn(
-              'w-[260px] justify-start text-left font-normal relative',
+              'w-full md:w-[260px] justify-start text-left font-normal relative',
               !date && 'text-muted-foreground'
             )}
           >

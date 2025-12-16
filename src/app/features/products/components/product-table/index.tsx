@@ -68,7 +68,7 @@ export function ProductListTable() {
       <div className="flex flex-col lg:flex-row gap-4 items-start lg:items-center justify-between bg-card p-4 rounded-lg border shadow-sm">
         <section className="flex flex-1 flex-col sm:flex-row gap-4 w-full">
           <DataTableTextFilter placeholder="Digite Nome ou SKU do produto" />
-          <section className="gap-2 pl-4 flex items-center">
+          <section className="gap-2 md:pl-4 flex items-center">
             <DataTableDropdownColumnsVisibility />
           </section>
         </section>
