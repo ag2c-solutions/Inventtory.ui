@@ -1,3 +1,4 @@
+import { isPostgrestError } from '@/lib/utils';
 import { PostgrestError } from '@supabase/supabase-js';
 
 export function handleProductError(
@@ -33,14 +34,4 @@ export function handleProductError(
   }
 
   throw new Error('Ocorreu um erro inesperado ao processar o produto.');
-}
-
-function isPostgrestError(error: unknown): error is PostgrestError {
-  return (
-    typeof error === 'object' &&
-    error !== null &&
-    'code' in error &&
-    'message' in error &&
-    'details' in error
-  );
 }

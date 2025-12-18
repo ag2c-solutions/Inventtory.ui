@@ -1,13 +1,4 @@
-import { PostgrestError } from '@supabase/supabase-js';
-
-function isPostgrestError(error: unknown): error is PostgrestError {
-  return (
-    typeof error === 'object' &&
-    error !== null &&
-    'code' in error &&
-    'message' in error
-  );
-}
+import { isPostgrestError } from '@/lib/utils';
 
 export function handleMovementError(error: unknown, action: string): never {
   console.error(`Erro em Movement Service [${action}]:`, error);

@@ -1,11 +1,10 @@
 import { supabase } from '@/app/config/supabase';
 import { handleCatalogError } from './error-handler';
 import { catalogMapper } from './mapper';
-import type { Catalog, CatalogThemeConfig } from '../types'; // Import centralizado
-import type { CatalogDTO } from '../types'; // Import centralizado
+import type { Catalog, CatalogThemeConfig } from '../types';
+import type { CatalogDTO } from '../types';
 import { stripUndefined } from '@/lib/utils';
 
-// Campos exatos que queremos buscar (Evita overfetching *)
 const selectQuery = `
   id,
   organization_id,

@@ -3,12 +3,10 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { MovementForm } from './index';
 import { useMovementForm } from './hooks';
 
-// 1. Mock do Hook Personalizado (Lógica de Negócio)
 vi.mock('./hooks', () => ({
   useMovementForm: vi.fn()
 }));
 
-// 2. Mocks dos Componentes Filhos
 vi.mock('./components/header', () => ({
   MovementFormHeader: () => <div data-testid="mock-header">Header</div>
 }));
@@ -16,7 +14,6 @@ vi.mock('./components/header', () => ({
 vi.mock('./components/product-search', () => ({
   ProductSearch: ({ onSelect }: any) => (
     <div data-testid="mock-product-search">
-      {/* Adicionado type="button" para evitar submit acidental */}
       <button
         type="button"
         onClick={() => onSelect({ id: 'prod-1' })}
@@ -49,7 +46,6 @@ vi.mock('./components/add-items-dialog', () => ({
     open ? (
       <div data-testid="mock-dialog">
         <h1>Dialog Aberto</h1>
-        {/* IMPORTANTE: type="button" previne que esses botões submetam o form pai */}
         <button
           type="button"
           onClick={() => onAdd([{ productId: '1', quantity: 1 }])}
@@ -74,7 +70,6 @@ describe('MovementForm', () => {
   const mockToggleDialog = vi.fn();
   const mockSelectProduct = vi.fn();
 
-  // Mock do handleSubmit do React Hook Form com proteção
   const mockHandleSubmit = vi.fn((fn) => (e: any) => {
     e?.preventDefault();
     if (typeof fn === 'function') {
@@ -85,7 +80,6 @@ describe('MovementForm', () => {
   beforeEach(() => {
     vi.clearAllMocks();
 
-    // Setup do mock respeitando a interface MovementFormContextType
     (useMovementForm as any).mockReturnValue({
       form: {
         handleSubmit: mockHandleSubmit,
@@ -190,7 +184,6 @@ describe('MovementForm', () => {
         watch: vi.fn().mockReturnValue([])
       },
       actions: {
-        // CORREÇÃO: Adicionado 'submit' aqui também para evitar crash se o form tentar submeter
         submit: mockSubmit,
         toggleDialog: mockToggleDialog,
         addItem: mockAddItem

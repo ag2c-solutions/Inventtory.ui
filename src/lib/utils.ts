@@ -1,3 +1,4 @@
+import type { PostgrestError } from '@supabase/supabase-js';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -168,7 +169,6 @@ const isValidCNPJ = (cnpj: string) => {
 
   return true;
 };
-
 export const validateDocument = (document: string) => {
   const cleanDoc = normalizeDocument(document);
 
@@ -186,4 +186,20 @@ export function debounce<T extends (...args: any[]) => void>(
     clearTimeout(timeout);
     timeout = setTimeout(() => func.apply(this, args), wait);
   };
+}
+
+export function isPostgrestError(error: unknown): error is PostgrestError {
+  return (
+    typeof error === 'object' &&
+    error !== null &&
+    'code' in error &&
+    'message' in error &&
+    'details' in error
+  );
+}
+
+export function stripUndefined(obj: Record<string, any>) {
+  return Object.fromEntries(
+    Object.entries(obj).filter(([, value]) => value !== undefined)
+  );
 }

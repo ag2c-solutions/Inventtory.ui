@@ -14,7 +14,8 @@ describe('handleMovementError', () => {
   it('should throw specific error for permission denied (42501)', () => {
     const error = {
       code: '42501',
-      message: 'Permission denied'
+      message: 'Permission denied',
+      details: 'Details'
     } as PostgrestError;
 
     expect(() => handleMovementError(error, 'test')).toThrow(
@@ -25,7 +26,8 @@ describe('handleMovementError', () => {
   it('should throw specific error for foreign key violation (23503)', () => {
     const error = {
       code: '23503',
-      message: 'Foreign key violation'
+      message: 'Foreign key violation',
+      details: 'Details'
     } as PostgrestError;
 
     expect(() => handleMovementError(error, 'test')).toThrow(
@@ -36,7 +38,8 @@ describe('handleMovementError', () => {
   it('should throw business rule error for P0001 code', () => {
     const error = {
       code: 'P0001',
-      message: 'Custom database exception'
+      message: 'Custom database exception',
+      details: 'Details'
     } as PostgrestError;
 
     expect(() => handleMovementError(error, 'test')).toThrow(
@@ -47,7 +50,8 @@ describe('handleMovementError', () => {
   it('should detect network errors based on message content', () => {
     const error = {
       code: '',
-      message: 'Network request failed'
+      message: 'Network request failed',
+      details: 'Details'
     } as PostgrestError;
 
     expect(() => handleMovementError(error, 'test')).toThrow(

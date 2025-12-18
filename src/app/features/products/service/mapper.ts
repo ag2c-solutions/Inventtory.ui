@@ -3,7 +3,6 @@ import type { ProductDTO } from '../types/dto';
 
 export const ProductMapper = {
   toDomain(data: ProductDTO): IProduct {
-    // VALIDAÇÃO DE INTEGRIDADE
     if (!data.categories) {
       throw new Error(
         `Inconsistência de dados: O produto "${data.name}" (ID: ${data.id}) não possui categoria vinculada.`
@@ -28,7 +27,6 @@ export const ProductMapper = {
       description: data.description || undefined,
       stock: data.stock,
       minimumStock: data.minimum_stock,
-      // Agora acessamos diretamente, pois a validação acima garante a existência
       category: data.categories,
       allImages: allImages.length > 0 ? allImages : undefined,
       attributes: data.product_attributes

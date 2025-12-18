@@ -4,7 +4,6 @@ import { MemoryRouter } from 'react-router';
 import { ProductTableColumnActions } from './column-action';
 import userEvent from '@testing-library/user-event';
 
-// 1. Mocks & Polyfills (Essenciais para Radix UI no JSDOM)
 vi.mock('react-router', async (importOriginal) => {
   const mod = await importOriginal<typeof import('react-router')>();
   return {

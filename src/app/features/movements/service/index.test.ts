@@ -141,7 +141,7 @@ describe('MovementService', () => {
       consoleErrorSpy.mockImplementation(() => {});
       mockRpc.mockResolvedValue({
         data: null,
-        error: { message: 'RPC Error', code: 'P0001' }
+        error: { message: 'RPC Error', code: 'P0001', details: 'Details' }
       });
 
       const payload: Movement = {
